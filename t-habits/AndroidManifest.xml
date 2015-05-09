@@ -23,6 +23,20 @@
             </intent-filter>
         </activity>
         
+        <service
+            android:name="com.hapticon.t_habits.service.THabitsService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name" >
+        </service>
+        
+        <receiver android:name="com.samsung.android.sdk.accessory.ServiceConnectionIndicationBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.accessory.service.action.ACCESSORY_SERVICE_CONNECTION_IND" />
+            </intent-filter>
+        </receiver>
+        
     </application>
 
 </manifest>
