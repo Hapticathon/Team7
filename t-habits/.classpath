@@ -5,5 +5,13 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry exported="true" kind="lib" path="/TPadLib/bin/tpadlib.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/android-support-v4-3014bcdf010755cd56170107621f926c.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/ioiolibaccessory-13a9999e6a274f7682fdf125d580d7d3.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/ioiolibandroid-74b619b8e18ed8c147962b6eb3ad87e4.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/ioiolibandroiddevice-fe48949be2a0aa7ceeb0323e407a3363.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/opencv library - 2.4.10-fb03954e9bf9b2556a9a3956fb8fcb50.jar"/>
+	<classpathentry exported="true" kind="lib" path="E:/hapticathon/t-habits/FullScreenTexture/bin/dexedLibs/tpadlib-449c4f680736e605843cf6ca86b74a5d.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
