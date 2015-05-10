@@ -2,15 +2,14 @@ package com.hapticon.t_habits.service;
 
 import java.util.ArrayList;
 
-import com.hapticon.t_habits.controllers.AppController;
-
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.util.Log;
+
+import com.hapticon.t_habits.controllers.AppController;
 
 public class THabitsService extends Service {
 
@@ -28,6 +27,11 @@ public class THabitsService extends Service {
 	
  	@Override
  	  public int onStartCommand(Intent intent, int flags, int startId) {
+ 		if (mController == null) {
+ 			mController = new AppController(getApplicationContext());
+ 			mController.startActivityEventRetriver();
+ 		}
+ 		
  	    return Service.START_STICKY;
  	  }
  	

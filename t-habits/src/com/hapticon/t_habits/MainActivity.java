@@ -15,10 +15,11 @@ import android.os.Bundle;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.hapticon.t_habits.service.ServiceConnector;
 
 public class MainActivity extends Activity {
 	
@@ -29,7 +30,6 @@ public class MainActivity extends Activity {
 	TPad mTpad;
 	
 	ServiceConnector connector = null;
-	private AppController mController;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +56,8 @@ public class MainActivity extends Activity {
 		
 		connector = new ServiceConnector(this);
 		
-		mController = new AppController(getBaseContext());
- 		print();
 	}
 	
-	public void print() {
-		Handler h = new Handler();
- 		h.postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				
-				Log.d("THabits", mController.getCurrentApp());
-				print();
-			}
-		}, 1000);
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

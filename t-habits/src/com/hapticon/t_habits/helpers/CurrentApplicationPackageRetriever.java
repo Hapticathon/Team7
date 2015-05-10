@@ -6,6 +6,8 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
 public class CurrentApplicationPackageRetriever {
@@ -67,9 +69,19 @@ public class CurrentApplicationPackageRetriever {
 
         return new String[] { };
     }
-
+    
     private ActivityManager activityManager() {
         return (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+    }
+    
+    private PackageManager getPackageManager() {
+    	return (PackageManager) context.getPackageManager();
+    }
+    
+    public List<ApplicationInfo> getInstalledApps() {
+    	final PackageManager pm = getPackageManager();
+    	return pm.getInstalledApplications(PackageManager.GET_META_DATA);
+
     }
 
 }
