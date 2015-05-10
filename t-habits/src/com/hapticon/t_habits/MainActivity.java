@@ -1,7 +1,17 @@
 package com.hapticon.t_habits;
 
+import com.hapticon.t_habits.R;
 import com.hapticon.t_habits.controllers.AppController;
 import com.hapticon.t_habits.service.ServiceConnector;
+
+import nxr.tpad.lib.TPad;
+import nxr.tpad.lib.TPadImpl;
+import nxr.tpad.lib.views.DepthMapView;
+import nxr.tpad.lib.views.FrictionMapView;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,6 +22,12 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 	
+	// Custom Haptic Rendering view defined in TPadLib
+	FrictionMapView fricView;
+	
+	// TPad object defined in TPadLib
+	TPad mTpad;
+	
 	ServiceConnector connector = null;
 	private AppController mController;
 
@@ -19,6 +35,24 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// Load new tpad object from TPad Implementation Library
+		mTpad = new TPadImpl(this);
+		
+		// Link friction view to .xml file
+		fricView = (FrictionMapView) findViewById(R.id.view1);
+		
+		// Link local tpad object to the FrictionMapView
+		fricView.setTpad(mTpad);
+		
+		// Load in the image stored in the drawables folder
+		Bitmap defaultBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.filter);
+		
+		// Set the friction data bitmap to the test image
+		fricView.setDataBitmap(defaultBitmap);
+		defaultBitmap.recycle();
+		
+		fricView.setDisplayShowing(false);
 		
 		connector = new ServiceConnector(this);
 		
@@ -60,6 +94,8 @@ public class MainActivity extends Activity {
 	
 	@Override
     protected void onDestroy() {
+		mTpad.disconnectTPad();
+		
         super.onDestroy();
         try {
             connector.doUnbindService();
